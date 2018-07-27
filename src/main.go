@@ -5,5 +5,5 @@ import (
 )
 
 func main() {
-	similarityDetectionTest()
+	detect.SimilarityDetectionTest()
 }

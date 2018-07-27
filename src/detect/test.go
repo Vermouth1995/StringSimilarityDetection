@@ -4,6 +4,6 @@ import (
 	// "log"
 )
 
-func similarityDetectionTest() {
+func SimilarityDetectionTest() {
 	//TODO
 }
