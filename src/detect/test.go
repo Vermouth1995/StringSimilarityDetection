@@ -1,8 +1,7 @@
-package test
+package detect
 
 import (
-	"log"
-	"detect"
+	// "log"
 )
 
 func similarityDetectionTest() {

@@ -1,5 +1,0 @@
-package detect
-
-import (
-	"util"
-)
