@@ -38,21 +38,38 @@ func EditDistanceDynamic(a string, b string) int {
 	var (
 		len_a int = len(a)
 		len_b int = len(b)
-		dis [][]int
 		i int
 		j int
 	)
 
-	for (i = 0; i <= len_a; i++) {
-        dis[i][0] = i;
-    }
-    for (j = 0; j <= len_b; j++) {
-        dis[0][j] = j;
+	if len_a == 0 {
+		return len_b
+	}
+	if len_b == 0 {
+		return len_a
+	}
+
+	dis := make([][]int, len_a)
+    for i = 0; i < len_a; i++ {
+        dis[i] = make([]int, len_b)
     }
 
 	for i = 0; i < len_a; i++ {
-		// TODO
-	}
+        dis[i][0] = i;
+    }
+    for j = 0; j < len_b; j++ {
+        dis[0][j] = j;
+    }
 
-	return dis[len_a][len_b]
+	for i = 1; i < len_a; i++ {
+        for j = 1; j < len_b; j++ {
+            if a[i-1] == b[j-1] {
+                dis[i][j] = dis[i-1][j-1];
+            } else {
+                dis[i][j] = MinVal(dis[i-1][j]+1, dis[i][j-1]+1, dis[i-1][j-1]+1);
+            }
+        }
+    }
+
+	return dis[len_a-1][len_b-1]
 }
